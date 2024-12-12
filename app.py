@@ -22,12 +22,12 @@ if uploaded_file is not None:
         output_file = "output_audio.mp3"
         video = VideoFileClip(temp_file)
         video.audio.write_audiofile(output_file, codec='libmp3lame')
-        
+
+        st.success("変換に成功しました!ダウンロードボタンからmp3ファイルをダウンロードしてください")
         # ダウンロードリンク表示
         with open(output_file, "rb") as f:
             st.download_button(label="Download MP3 File", data=f, file_name="output_audio.mp3", mime="audio/mp3")
-        
-        st.success("変換に成功しました!ダウンロードボタンからmp3ファイルをダウンロードしてください")
+    
     except Exception as e:
         st.error(f"An error occurred: {e}")
     finally:
