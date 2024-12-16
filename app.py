@@ -21,7 +21,7 @@ if uploaded_file is not None:
         st.info("MP3に変換中...")
         output_file = "output_audio.mp3"
         video = VideoFileClip(temp_file)
-        video.audio.write_audiofile(output_file, codec='libmp3lame')
+        video.audio.write_audiofile(output_file, codec='libmp3lame', bitrate="320k", ffmpeg_params=["-ar", "48000"])
 
         st.success("変換に成功しました!ダウンロードボタンからmp3ファイルをダウンロードしてください")
         # ダウンロードリンク表示
